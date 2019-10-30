@@ -1,0 +1,34 @@
+provider:
+  name: provider
+spring:
+#  datasource:
+#    url: jdbc:mysql://61.181.76.60:3306/lias?useUnicode=true&useSSL=false&characterEncoding=UTF-8
+#    driver-class-name: com.mysql.jdbc.Driver
+#    username: root
+#    password: YZgP3oX2
+  application:
+    name: consumer
+  profiles:
+    active: prod
+  cloud:
+    nacos:
+      discovery:
+        register-enabled: true
+        server-addr: 127.0.0.1:8848
+        weight: 2
+      # namespace: 42510844-08db-4cca-bf7d-2408f239e4c8
+      config:
+        server-addr: 127.0.0.1:8848
+        #指定文件后缀
+        prefix: ${spring.application.name}
+#        prefix: provider
+        file-extension: yml
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#
+#server:
+#  port: 9012
